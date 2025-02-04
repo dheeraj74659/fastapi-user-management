@@ -1,0 +1,12 @@
+# python cache
+__pycache__
+
+# virtualenv
+venv
+
+# environmental file
+.env
+
+# alembic
+alembic
+alembic.ini

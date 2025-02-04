@@ -1,0 +1,21 @@
+version: '3.12'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: user_db
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://postgres:1234@db:5432/user_db
+    ports:
+      - "8000:8000"
