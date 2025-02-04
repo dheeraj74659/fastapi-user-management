@@ -3,6 +3,7 @@ version: '3.12'
 services:
   db:
     image: postgres:15
+    container_name: postgres_db
     restart: always
     environment:
       POSTGRES_USER: postgres
@@ -10,12 +11,18 @@ services:
       POSTGRES_DB: user_db
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
-  app:
+  api:
     build: .
+    container_name: fastapi_app
     depends_on:
       - db
     environment:
       - DATABASE_URL=postgresql+asyncpg://postgres:1234@db:5432/user_db
     ports:
       - "8000:8000"
+
+volumes:
+  postgres_data:

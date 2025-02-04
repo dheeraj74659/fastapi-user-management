@@ -7,6 +7,5 @@ venv
 # environmental file
 .env
 
-# alembic
-alembic
-alembic.ini
+# misc
+todo
