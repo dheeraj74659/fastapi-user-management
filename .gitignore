@@ -9,3 +9,6 @@ venv
 
 # misc
 todo
+
+# IDE
+.vscode
